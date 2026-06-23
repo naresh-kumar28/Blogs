@@ -1,0 +1,101 @@
+1. create project
+
+2. creating superuser
+
+3. creating app
+
+4. create Templates
+
+5. Design Homepage Layout & Static Files
+
+6. add .gitignore file
+
+7. create Category Models
+
+8. create Blogs Models	
+
+9. Media File Configration
+
+10. Create comment Model, About Model, SocialLinks Model
+
+11. Add Category & Blogs
+
+12. Show Category
+
+13. fetch Featured Post
+
+14. fetch Recent Article
+
+15. Posts_by_category_page create
+
+16. Posts_by_category_page design , Try Except and 404 Page
+
+17. Linking Posts with category and template inheritance
+
+18. context_processors
+
+19. single_page_blog Setup
+
+20. final single_blog page
+
+21. fetch about details
+
+22. fetch social Links
+
+23. git PUsh
+
+24. complete search features
+
+25. register
+
+26. login
+
+27. logout
+
+28. Authentication & authorization
+
+29. Groups
+
+30. Environment Recreations
+
+31. upgrading the all package
+
+32. Create Dashboard App & Configure
+
+33. Dashboard Design & blogs and category count
+
+34. Login Required & Decorator
+
+35. create category page & linking sidebar (highliting)
+
+36. show data in category table
+
+37. add category
+
+38. edit category
+
+39. Delete category
+
+40. Git Push
+
+41. show blogs Post
+
+42. add blogs Post
+
+43. assign login user in post & generate uique slug 
+
+44. Edit Blogs Post
+
+45. Delete Blogs Post
+
+46. Manager dashboard show all users
+
+47. Manager dashboard add user form
+
+48. fix security issue not show the user page to editor 
+
+49. edit the user data
+
+50. user account deleted with safe method
+
+51. comment models dynamic

@@ -1,0 +1,63 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto px-4 sm:px-6 py-10">
+
+    <aside class="lg:col-span-3">
+        <!-- load the sidebar here -->
+
+    </aside>
+
+    <div class="lg:col-span-9">
+        
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-serif font-bold text-gray-900">All Posts</h2>
+            <a href="#" class="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-5 py-2.5 rounded-sm transition-colors shadow-sm">
+                + Create Post
+            </a>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-sm shadow-sm overflow-hidden overflow-x-auto">
+            <table class="w-full text-left border-collapse whitespace-nowrap">
+                <thead>
+                    <tr class="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-600 font-bold">
+                        <th class="px-6 py-4">#</th>
+                        <th class="px-6 py-4">Title</th>
+                        <th class="px-6 py-4">Category</th>
+                        <th class="px-6 py-4">Author</th>
+                        <th class="px-6 py-4">Status</th>
+                        <th class="px-6 py-4 text-center">Featured</th>
+                        <th class="px-6 py-4">Action</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="text-sm text-gray-700 divide-y divide-gray-100">
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-gray-900">1</td>
+                        <td class="px-6 py-4 font-medium text-gray-900 truncate max-w-[200px]" title="Building Scalable SaaS Architectures with Django">
+                            Building Scalable SaaS Architectures...
+                        </td>
+                        <td class="px-6 py-4">System Design</td>
+                        <td class="px-6 py-4">Sadique Hussain</td>
+                        <td class="px-6 py-4">
+                            <span class="bg-green-100 text-green-700 px-2.5 py-1 rounded-sm text-xs font-bold uppercase">Published</span>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            <i class="fa fa-check text-green-500 text-lg"></i>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-4">
+                                <a href="#" class="text-green-500 hover:text-green-600 transition-colors" title="Edit">
+                                    <i class="fa fa-edit text-lg"></i>
+                                </a>
+                                <a href="#" class="text-red-500 hover:text-red-600 transition-colors" title="Delete">
+                                    <i class="fa fa-trash text-lg"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

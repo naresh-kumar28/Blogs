@@ -1,0 +1,43 @@
+{% if messages %}
+            <div class="mb-6 space-y-4">
+                {% for message in messages %}
+                    <div class="flex items-start p-4 border rounded-sm shadow-sm transition-all duration-300
+                        {% if message.tags == 'success' %} bg-green-50 border-green-200 text-green-800
+                        {% elif message.tags == 'error' %} bg-red-50 border-red-200 text-red-800
+                        {% elif message.tags == 'warning' %} bg-amber-50 border-amber-200 text-amber-800
+                        {% elif message.tags == 'info' %} bg-blue-50 border-blue-200 text-blue-800
+                        {% else %} bg-gray-50 border-gray-200 text-gray-800 {% endif %}">
+
+                        <div class="flex-shrink-0 mt-0.5">
+                            {% if message.tags == 'success' %}
+                                <i class="fa fa-check-circle text-green-500 text-lg"></i>
+                            {% elif message.tags == 'error' %}
+                                <i class="fa fa-exclamation-circle text-red-500 text-lg"></i>
+                            {% elif message.tags == 'warning' %}
+                                <i class="fa fa-exclamation-triangle text-amber-500 text-lg"></i>
+                            {% elif message.tags == 'info' %}
+                                <i class="fa fa-info-circle text-blue-500 text-lg"></i>
+                            {% else %}
+                                <i class="fa fa-bell text-gray-500 text-lg"></i>
+                            {% endif %}
+                        </div>
+
+                        <div class="ml-3 text-sm font-medium w-full">
+                            {{ message }}
+                        </div>
+
+                        <button type="button" 
+                            onclick="this.parentElement.style.display='none';"
+                            class="ml-auto -mx-1.5 -my-1.5 p-1.5 rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-1 inline-flex hover:bg-black/5 transition-colors
+                            {% if message.tags == 'success' %} focus:ring-green-600 text-green-600
+                            {% elif message.tags == 'error' %} focus:ring-red-600 text-red-600
+                            {% elif message.tags == 'warning' %} focus:ring-amber-600 text-amber-600
+                            {% elif message.tags == 'info' %} focus:ring-blue-600 text-blue-600
+                            {% else %} focus:ring-gray-600 text-gray-600 {% endif %}">
+                            <span class="sr-only">Dismiss</span>
+                            <i class="fa fa-times text-base"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}

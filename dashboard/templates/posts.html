@@ -1,0 +1,111 @@
+{% extends "base_admin.html" %}
+
+{% block admin_content %}
+<div class="space-y-6">
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-2">
+        <div>
+            <h2 class="text-2xl font-serif font-bold text-slate-900">All Posts</h2>
+            <p class="text-sm text-slate-500 mt-1">Manage, edit, and publish your articles.</p>
+        </div>
+        <a href="{% url 'add_post' %}" class="inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg ">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Create Post
+        </a>
+    </div>
+
+    <div class="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse whitespace-nowrap">
+                
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100 text-xs uppercase tracking-wider text-slate-500 font-bold">
+                        <th class="px-6 py-5 w-16">#</th>
+                        <th class="px-6 py-5">Title</th>
+                        <th class="px-6 py-5">Category</th>
+                        <th class="px-6 py-5">Author</th>
+                        <th class="px-6 py-5">Status</th>
+                        <th class="px-6 py-5 text-center">Featured</th>
+                        <th class="px-6 py-5 text-right">Action</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="text-sm text-slate-600 divide-y divide-slate-100">
+                    
+                    {% for post in posts %}
+                    <tr class="hover:bg-slate-50/80 transition-colors group">
+                        <td class="px-6 py-4 font-semibold text-slate-900">{{forloop.counter}}</td>
+                        
+                        <td class="px-6 py-4">
+                            <p class="font-semibold text-slate-900 truncate max-w-[220px]" title="Building Scalable SaaS Architectures with Django">
+                                {{post.title}}
+                            </p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">{{post.created_at}}</p>
+                        </td>
+                        
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-600">
+                                {{post.category}}
+                            </span>
+                        </td>
+                        
+                        <td class="px-6 py-4 font-medium text-slate-700">
+                            {{post.author}}
+                        </td>
+                        
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium">
+                                {% if post.status == 'Published' %}
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-600">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5"></span> {{post.status}}
+                            </span>
+                            {% else %}
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-600">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span> {{post.status}}
+                            </span>
+                            {% endif %}
+                            </span>
+                        </td>
+                        
+                        <td class="px-6 py-4 text-center">
+                            {% if post.is_featured %}
+                            <div class="inline-flex p-1.5 bg-amber-50 text-[#F59E0B] rounded-full" title="Featured Post">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                            </div>
+                            {% else %}
+                            <div class="inline-flex p-1.5 text-slate-300" title="Not Featured">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                            </div>
+                            {% endif %}
+                        </td>
+                        
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-end gap-2">
+                                <a href="{% url 'edit_post' post.id %}" class="p-2 text-slate-400 hover:text-[#F59E0B] hover:bg-amber-50 rounded-lg transition-all duration-200" title="Edit Post">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </a>
+                                <a href="{% url 'delete_post' post.id %}" class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200" title="Delete Post">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
