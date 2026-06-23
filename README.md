@@ -1,18 +1,19 @@
-Django Blog Website – Learning Journey 
-Covered 80% of Django Through a Single Project
+# Django Blog Website – Learning Journey
 
-✔ Learned 80+ Django Concepts
-✔ Built a Complete Blog Website
-✔ Implemented Authentication & Authorization
-✔ Applied Role-Based Access Control (RBAC)
-✔ Developed an Admin Dashboard
-✔ Performed Complete CRUD Operations
-✔ Implemented Search & Comment Features
-✔ Worked with Git & GitHub Workflow
+## Covered 80% of Django Through a Single Project
 
-=========================
-PROJECT SETUP & BASICS
-======================
+✅ Learned 80+ Django Concepts  
+✅ Built a Complete Blog Website  
+✅ Implemented Authentication & Authorization  
+✅ Applied Role-Based Access Control (RBAC)  
+✅ Developed an Admin Dashboard  
+✅ Performed Complete CRUD Operations  
+✅ Implemented Search & Comment Features  
+✅ Worked with Git & GitHub Workflow  
+
+---
+
+# PROJECT SETUP & BASICS
 
 1. Django Project Creation
 2. Django App Creation
@@ -23,17 +24,17 @@ PROJECT SETUP & BASICS
 7. Git & GitHub Integration
 8. .gitignore Usage
 
-=========================
-DJANGO MODELS
-=============
+---
+
+# DJANGO MODELS
 
 9. Creating Models
 10. Model Relationships (ForeignKey)
 11. Model Migration Process
 
-=========================
-DATABASE OPERATIONS (CRUD)
-==========================
+---
+
+# DATABASE OPERATIONS (CRUD)
 
 12. Create Data
 13. Read Data
@@ -41,9 +42,9 @@ DATABASE OPERATIONS (CRUD)
 15. Delete Data
 16. Safe Delete Methods
 
-=========================
-QUERYSETS & ORM
-===============
+---
+
+# QUERYSETS & ORM
 
 17. Fetching All Records
 18. Filtering Data
@@ -54,9 +55,9 @@ QUERYSETS & ORM
 23. Dynamic Comment Query
 24. Count Queries
 
-=========================
-VIEWS & ROUTING
-===============
+---
+
+# VIEWS & ROUTING
 
 25. Function Based Views (FBV)
 26. URL Routing
@@ -65,9 +66,9 @@ VIEWS & ROUTING
 29. Category Based Pages
 30. Search Functionality
 
-=========================
-TEMPLATES
-=========
+---
+
+# TEMPLATES
 
 31. Template Inheritance
 32. Template Tags
@@ -75,25 +76,25 @@ TEMPLATES
 34. Dynamic Data Rendering
 35. Sidebar Navigation Highlighting
 
-=========================
-ERROR HANDLING
-==============
+---
+
+# ERROR HANDLING
 
 36. Try-Except Usage
 37. 404 Error Page
 38. get_object_or_404()
 
-=========================
-CONTEXT & REUSABILITY
-=====================
+---
+
+# CONTEXT & REUSABILITY
 
 39. Context Dictionary
 40. Context Processors
 41. Global Template Data Sharing
 
-=========================
-AUTHENTICATION SYSTEM
-=====================
+---
+
+# AUTHENTICATION SYSTEM
 
 42. User Registration
 43. User Login
@@ -102,9 +103,9 @@ AUTHENTICATION SYSTEM
 46. Authorization
 47. Login Required Decorator
 
-=========================
-USER ROLES & PERMISSIONS
-========================
+---
+
+# USER ROLES & PERMISSIONS
 
 48. Django Groups
 49. Role Based Access Control (RBAC)
@@ -113,19 +114,18 @@ USER ROLES & PERMISSIONS
 52. Permission Based Views
 53. Restrict Unauthorized Access
 
-=========================
-FORMS
-=====
+---
+
+# FORMS
 
 54. Django Forms
 55. Model Forms
 56. Form Validation
 57. File Upload Forms
 
+---
 
-=========================
-BLOG FEATURES
-=============
+# BLOG FEATURES
 
 58. Featured Posts
 59. Recent Articles
@@ -134,25 +134,26 @@ BLOG FEATURES
 62. Comment System
 63. Unique Slug Generation
 
-=========================
-SECURITY CONCEPTS
-=================
+---
+
+# SECURITY CONCEPTS
 
 64. Access Control
 65. Protected Dashboard Routes
 66. User Ownership Validation
 67. Secure User Deletion
 
-=========================
-DEPLOYMENT & MAINTENANCE
-========================
+---
+
+# DEPLOYMENT & MAINTENANCE
 
 68. Environment Recreation
 69. requirements.txt Usage
 70. Package Upgradation
 71. Git Push Workflow
 
-=========================
+---
 
+## Note
 
 For the UI/UX design of this project, I took assistance from AI tools. However, all backend logic, Django implementation, database operations, authentication, authorization, permissions, CRUD functionality, search, comments, and overall application logic were written by me.
