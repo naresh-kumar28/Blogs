@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3=so(gb0o@^b_56&ky9+%vnhp4@zaa0a6#p8e8=9!-ene_kze3'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Deployment ke liye DEBUG mode dynamic banaya gaya hai:
+# Local system me True rahega, aur Render par .env se False set kar sakte hain security ke liye.
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+# Render ka URL (jaise app.onrender.com) request allow karne ke liye ALLOWED_HOSTS me '*' set kiya hai.
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+
 
 
 # Application definition
@@ -49,6 +54,8 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # WhiteNoise: Render/Production server par CSS, JS aur Images (Static files) serve karne ke liye add kiya hai.
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,12 +89,39 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# Using MySQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('NAME', default='django_blogs'),
+        'USER': config('USER', default='root'),
+        'PASSWORD': config('PASSWORD', default='Root@123'),
+        'HOST': config('HOST', default='localhost'),
+        'PORT': config('PORT', default='3306'),
     }
 }
+
+# Render Cloud Deployment ke liye:
+# Jab app Render par chalega, wahan ka Cloud Database URL (PostgreSQL/MySQL) automatic pick ho jayega.
+# Jab tak local system par hain, tab tak upar wala local MySQL hi chalega.
+try:
+    import dj_database_url
+    DATABASE_URL = config('DATABASE_URL', default=None)
+    if DATABASE_URL:
+        DATABASES['default'] = dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+except ImportError:
+    pass
 
 
 # Password validation
@@ -125,6 +159,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT: Deployment ke time 'collectstatic' command se sabhi CSS/JS files is 'staticfiles' folder me aayengi.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 #image work
 MEDIA_URL = '/media/'
