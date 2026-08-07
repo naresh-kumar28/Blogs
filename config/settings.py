@@ -111,17 +111,17 @@ DATABASES = {
 # Render Cloud Deployment ke liye:
 # Jab app Render par chalega, wahan ka Cloud Database URL (PostgreSQL/MySQL) automatic pick ho jayega.
 # Jab tak local system par hain, tab tak upar wala local MySQL hi chalega.
-try:
-    import dj_database_url
-    DATABASE_URL = config('DATABASE_URL', default=None)
-    if DATABASE_URL:
-        DATABASES['default'] = dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
-except ImportError:
-    pass
+# try:
+#     import dj_database_url
+#     DATABASE_URL = config('DATABASE_URL', default=None)
+#     if DATABASE_URL:
+#         DATABASES['default'] = dj_database_url.config(
+#             default=DATABASE_URL,
+#             conn_max_age=600,
+#             conn_health_checks=True,
+#         )
+# except ImportError:
+#     pass
 
 
 # Password validation
