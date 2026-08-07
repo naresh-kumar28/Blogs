@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'blogs',
     "crispy_forms",
     "crispy_tailwind",
@@ -132,9 +134,9 @@ STATIC_URL = '/static/'
 # STATIC_ROOT: Deployment ke time 'collectstatic' command se sabhi CSS/JS files is 'staticfiles' folder me aayengi.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-#image work
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = 'media'
+# Media files (Cloudinary)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 #IMAGE WORK
