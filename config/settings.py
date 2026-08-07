@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-# Using MySQL
+# Using MySQL (Local & Production both)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -104,24 +104,21 @@ DATABASES = {
         'USER': config('USER', default='root'),
         'PASSWORD': config('PASSWORD', default='Root@123'),
         'HOST': config('HOST', default='localhost'),
-        'PORT': config('PORT', default='3306'),
+        'PORT': config('PORT', default=3306, cast=int),
     }
 }
 
-# Render Cloud Deployment ke liye:
-# Jab app Render par chalega, wahan ka Cloud Database URL (PostgreSQL/MySQL) automatic pick ho jayega.
-# Jab tak local system par hain, tab tak upar wala local MySQL hi chalega.
-# try:
-#     import dj_database_url
-#     DATABASE_URL = config('DATABASE_URL', default=None)
-#     if DATABASE_URL:
-#         DATABASES['default'] = dj_database_url.config(
-#             default=DATABASE_URL,
-#             conn_max_age=600,
-#             conn_health_checks=True,
-#         )
-# except ImportError:
-#     pass
+# Render / Cloud Deployment ke liye:
+# Agar Cloud server par DATABASE_URL Environment Variable set hai (e.g. mysql://user:pass@host:port/dbname),
+# to dj_database_url use hakar dynamic database pick kar lega.
+DATABASE_URL = config('DATABASE_URL', default=None)
+if DATABASE_URL:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 
 
 # Password validation
