@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from decouple import config, Csv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,37 +90,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# Using MySQL (Local & Production both)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('NAME', default='django_blogs'),
-        'USER': config('USER', default='root'),
-        'PASSWORD': config('PASSWORD', default='Root@123'),
-        'HOST': config('HOST', default='localhost'),
-        'PORT': config('PORT', default=3306, cast=int),
-    }
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
-
-# Render / Cloud Deployment ke liye:
-# Agar Cloud server par DATABASE_URL Environment Variable set hai (e.g. mysql://user:pass@host:port/dbname),
-# to dj_database_url use hakar dynamic database pick kar lega.
-DATABASE_URL = config('DATABASE_URL', default=None)
-if DATABASE_URL:
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config(
-        default=DATABASE_URL,
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
